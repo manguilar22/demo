@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
-@Entity
+@Entity             //  @GeneratedValue(strategy=GenerationType.AUTO)
 @Component
 public class Pet {
 

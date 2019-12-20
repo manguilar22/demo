@@ -1,16 +1,19 @@
 package guru.aguilar.demo.domain;
 
-
-import com.google.gson.Gson;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Component
 @Data
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
     private Long Id;
     private String name;
     private String email;
