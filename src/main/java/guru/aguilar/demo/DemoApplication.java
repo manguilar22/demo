@@ -10,14 +10,12 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 
-        AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(Config.class);
+        //AnnotationConfigApplicationContext aca = new AnnotationConfigApplicationContext(Config.class);
 
-        Config.Random r = aca.getBean("random",Config.Random.class);
+        //Config.Random r = aca.getBean("random",Config.Random.class);
 
-        System.out.println(r.iWork());
-
-
-        aca.close();
+        //System.out.println(r.iWork());
+        //aca.close();
 
 	}
 

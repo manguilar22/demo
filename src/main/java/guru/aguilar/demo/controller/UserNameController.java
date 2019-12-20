@@ -31,9 +31,8 @@ public class UserNameController {
     }
 
 
-    @GetMapping("size")
+    @GetMapping("/size")
     public @ResponseBody Integer sizeOfDataRepository(){
-
         return  repo.size();
     }
 
