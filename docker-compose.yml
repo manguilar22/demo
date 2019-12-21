@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  spring:
+    container_name: spring-rest-api
+    image: spring:demo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+
+  mysqlDB:
+    container_name: spring-mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: mysqluser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: db_example
+    ports:
+      - "3306:3306"
+    depends_on:
+      - spring

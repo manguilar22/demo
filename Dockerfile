@@ -7,8 +7,7 @@ WORKDIR /app
 # Load Built JAR File
 COPY /build/libs/demo-0.0.1-SNAPSHOT.jar .
 
-ENV MYSQL_HOSTNAME=""
-ENV MONGO_HOSTNAME=""
+#ENV MYSQL_HOSTNAME ""
 
 EXPOSE 8080
 

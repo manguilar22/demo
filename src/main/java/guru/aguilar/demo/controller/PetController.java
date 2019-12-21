@@ -15,13 +15,12 @@ public class PetController {
     @Autowired
     private PetRepository petRepository;
 
-    @GetMapping("/")
+    @GetMapping
     public @ResponseBody String getBackRootSayHello(){
         return "WORKS, From the PET CONTROLLER";
     }
 
-
-    @PostMapping("/")
+    @PostMapping
     public @ResponseBody Pet submitPet(@RequestBody Pet pet){
         return pet;
     }
@@ -31,7 +30,6 @@ public class PetController {
         petRepository.save(pet);
         return "SAVED";
     }
-
 
     @GetMapping("/db")
     public @ResponseBody Iterable<Pet> getAllPets(){

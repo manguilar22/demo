@@ -6,11 +6,18 @@ import com.google.gson.GsonBuilder;
 import guru.aguilar.demo.domain.User;
 import guru.aguilar.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+
+/**
+ *   curl http://localhost:8080/user/add -H "Content-type:application/json" -d ' { "name" : "kjdsjds","email":"fdsjfdsjk"} ' -X POST
+ */
 @RestController
 @RequestMapping("/user")
 public class UserNameController {
@@ -21,8 +28,7 @@ public class UserNameController {
     private UserRepository userRepository;
 
     @GetMapping
-    public @ResponseBody
-    String getHomePage() {
+    public @ResponseBody String getHomePage() {
         return "WORKS";
     }
 
@@ -30,6 +36,12 @@ public class UserNameController {
     public @ResponseBody String postSomethingOnPage(@RequestBody User user) {
         String resp = user.toString();
         return resp;
+    }
+
+    @GetMapping("/{id}")
+    public @ResponseBody User findById(@PathVariable Long id){
+         Optional<User> op = userRepository.findById(id);
+         return !op.isPresent() ? null : op.get();
     }
 
     @GetMapping("/size")
