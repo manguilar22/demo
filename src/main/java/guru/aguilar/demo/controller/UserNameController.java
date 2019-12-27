@@ -27,17 +27,10 @@ public class UserNameController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping
+    @GetMapping("/test")
     public @ResponseBody String getHomePage() {
         return "WORKS";
     }
-
-    @PostMapping
-    public @ResponseBody String postSomethingOnPage(@RequestBody User user) {
-        String resp = user.toString();
-        return resp;
-    }
-
 
     @GetMapping("/{id}")
     public @ResponseBody User findById(@PathVariable Long id){
