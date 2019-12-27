@@ -10,12 +10,11 @@ import javax.persistence.Id;
 
 @Data
 @Entity             //  @GeneratedValue(strategy=GenerationType.AUTO)
-@Component
 public class Pet {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long Id;
     private String name;
     private String type;
 
