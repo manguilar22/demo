@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-mysql-deployment
+  labels:
+    app: spring-mysql
+    tier: fullstack
+  annotations:
+    github: ""
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-mysql
+  template:
+    metadata:
+      labels:
+        app: spring-mysql
+    spec:
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: ""
+      containers:
+        - name: spring-app
+          image: manguilar22/spring:kube
+          ports:
+            - containerPort: 8080
+        - name: spring-mysql-backend
+          image: mysql:5.7
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+          volumeMounts:
+            - name: mysql-data
+              volumePath: /var/lib/mysql
