@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.3.BUILD-SNAPSHOT'
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 }
@@ -8,63 +8,33 @@ group = 'guru.aguilar'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
-	maven { url 'https://repo.spring.io/snapshot' }
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
 }
 
-ext {
-	set('springCloudVersion', "Hoxton.BUILD-SNAPSHOT")
+repositories {
+	mavenCentral()
 }
 
 dependencies {
-
-    // MYSQL 
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
-    
-    // GSON 
-    implementation 'com.google.code.gson:gson:2.8.6'
-
-    // Lombok
-    // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly 'org.projectlombok:lombok:1.18.10'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
-
-    // Actuator
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
-    // Prometheus (Actuator) 
-    // https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
-    compile group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.3.2'
-
-
-    // MYSQL - JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-    // Spring Web 
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-    implementation 'org.springframework.cloud:spring-cloud-stream'
-	//implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka'
-	//implementation 'org.springframework.kafka:spring-kafka'
-    
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.data:spring-data-rest-hal-browser'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	testImplementation 'org.springframework.cloud:spring-cloud-stream-test-support'
-	//testImplementation 'org.springframework.kafka:spring-kafka-test'
+	testImplementation 'io.projectreactor:reactor-test'
 }
 
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
+test {
+	useJUnitPlatform()
 }
-
-//test {
-//	useJUnitPlatform()
-//}
