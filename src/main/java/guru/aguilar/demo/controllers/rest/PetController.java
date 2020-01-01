@@ -1,9 +1,11 @@
-package guru.aguilar.demo.controllers;
+package guru.aguilar.demo.controllers.rest;
 
 
 import guru.aguilar.demo.domain.Pet;
 import guru.aguilar.demo.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -17,7 +19,6 @@ GET - curl http://localhost:8080/pet/1
 @RestController
 @RequestMapping(path = "/pet")
 public class PetController {
-
 
     @Autowired
     private PetRepository petRepository;
@@ -33,7 +34,7 @@ public class PetController {
 
 
     @GetMapping(path = "/{id}",produces = "application/json")
-    public @ResponseBody Pet getPetpyId(@PathVariable Long id){
+    public @ResponseBody Pet getPetbyId(@PathVariable Long id){
         Optional<Pet> p = petRepository.findById(id);
         return  p.get();
     }

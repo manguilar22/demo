@@ -7,5 +7,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @ComponentScan("guru.aguilar.demo.*")
+@EnableAutoConfiguration
+@EnableWebMvc
 public class Config {
 }
