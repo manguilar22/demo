@@ -9,5 +9,4 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan("guru.aguilar.demo.*")
 @EnableAutoConfiguration
 @EnableWebMvc
-public class Config {
-}
+public class Config {}

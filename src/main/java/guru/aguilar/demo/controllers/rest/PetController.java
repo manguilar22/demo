@@ -32,7 +32,6 @@ public class PetController {
         return  "SAVED SUCCESSFULLY";
     }
 
-
     @GetMapping(path = "/{id}",produces = "application/json")
     public @ResponseBody Pet getPetbyId(@PathVariable Long id){
         Optional<Pet> p = petRepository.findById(id);
