@@ -12,8 +12,11 @@ WORKDIR /app
 # Load Built JAR File
 COPY ./build/libs/demo-0.0.1-SNAPSHOT.jar .
 
+#THYMELEAF
+#ADD ./src/main/resources/templates /store
+
 ENV MYSQL_HOSTNAME 127.0.0.1
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
