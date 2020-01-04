@@ -21,10 +21,8 @@ repositories {
 
 dependencies {
 
-    compile 'io.micrometer:micrometer-spring-legacy:latest.release'
-
-    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.2.2.RELEASE'
-
+    //compile 'io.micrometer:micrometer-spring-legacy:latest.release'
+    
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.2.RELEASE'
     
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
