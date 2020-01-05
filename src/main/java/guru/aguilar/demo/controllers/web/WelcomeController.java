@@ -13,10 +13,6 @@ import java.util.List;
 @Controller
 public class WelcomeController {
 
-
-
-
-
     @GetMapping("/hello")
     public String main(Model model) {
         model.addAttribute("message", "Simple MESSAGE");

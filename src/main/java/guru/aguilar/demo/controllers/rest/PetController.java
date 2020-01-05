@@ -23,6 +23,11 @@ public class PetController {
     @Autowired
     private PetRepository petRepository;
 
+    @GetMapping(path = "/",consumes = "application/json")
+    public @ResponseBody Iterable<Pet> gettingAllData(){
+        return petRepository.findAll();
+    }
+
     @PostMapping(path = "/add",consumes = "application/json",produces = "application/json")
     public @ResponseBody String postingData(@RequestBody Pet pet){
         if (pet.getName() == null) {
