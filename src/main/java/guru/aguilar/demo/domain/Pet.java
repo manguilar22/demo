@@ -15,7 +15,7 @@ public class Pet  {
     private String type;
 
 
-    public Pet(){}
+    protected Pet(){}
 
     public Pet(String name, String type){
         this.name = name;

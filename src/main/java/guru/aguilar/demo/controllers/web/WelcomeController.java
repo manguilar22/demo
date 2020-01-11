@@ -13,11 +13,15 @@ import java.util.List;
 @Controller
 public class WelcomeController {
 
+    //@GetMapping("/")
+    //public String indexControllerStrict(){
+    //    return "index";
+    //}
+
     @GetMapping("/hello")
     public String main(Model model) {
         model.addAttribute("message", "Simple MESSAGE");
         model.addAttribute("title", "SImple TASK");
-
         return "welcome"; //view
     }
 
@@ -31,7 +35,6 @@ public class WelcomeController {
 
     @GetMapping("/saying")
     public String logMessagesWithParam(Model model){
-
         List<String> data = Arrays.asList(new String[]{"lfsaddl","lkdaf","lkds"});
         model.addAttribute("logs",data);
         return "welcome";

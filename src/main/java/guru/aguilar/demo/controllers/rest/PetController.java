@@ -4,8 +4,6 @@ package guru.aguilar.demo.controllers.rest;
 import guru.aguilar.demo.domain.Pet;
 import guru.aguilar.demo.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -23,7 +21,7 @@ public class PetController {
     @Autowired
     private PetRepository petRepository;
 
-    @GetMapping(path = "/",consumes = "application/json")
+    @GetMapping(path = "/db",produces = "application/json")
     public @ResponseBody Iterable<Pet> gettingAllData(){
         return petRepository.findAll();
     }

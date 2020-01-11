@@ -12,5 +12,10 @@
 
 <h1 th:text="test"/>
 
+<tr th:each="user : ${userDatabase}">
+    <td th:text="${user}"></td>
+</tr>
+
+
 </body>
 </html>

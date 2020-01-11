@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
 </head>
 <body>
+<p>Get your greeting <a href="/hello">here</a></p>
+<p>Get your sample <a href="/sample">here</a></p>
 
+<h1> Test </h1>
+<p th:text="${test}"/>
+<p th:text="${fluxMap}"/>
+<h1> HTML Map Table</h1>
+<tr th:each="e : ${fluxMap}">
+    <td th:text="${e}"></td>
+</tr>
+<h1> Web App </h1>
+<tr th:each="e : ${fluxExample}">
+    <td th:text="${e}"/>
+</tr>
+<h1>My List Example</h1>
+<tr th:each="user : ${userList}">
+    <td th:text="${user.firstName}"/>
+</tr>
+<h1>My Enumeration Example </h1>
+<tr th:each="e, idx :${userList}">
+    <td th:text="${idx.count}"/>
+    <td th:text="${idx.even}"/>
+    <td th:text="${e.firstName}"/>
+    <tr/>
+</tr>
 </body>
 </html>
