@@ -17,15 +17,20 @@
 <tr th:each="e : ${fluxMap}">
     <td th:text="${e}"></td>
 </tr>
-<h1> Web App </h1>
-<tr th:each="e : ${fluxExample}">
-    <td th:text="${e}"/>
-</tr>
 <h1>My List Example</h1>
 <tr th:each="user : ${userList}">
     <td th:text="${user.firstName}"/>
 </tr>
 <h1>My Enumeration Example </h1>
+<!--
+Enumeration Methods (idx)
+    * index: the current iteration index, starting with 0 (zero)
+    * count: the number of elements processed so far
+    * size: the total number of elements in the list
+    * even/odd: checks if the current iteration index is even or odd
+    * first:  checks if the current iteration is the first one
+    * last: checks if the current iteration is the last one
+-->
 <tr th:each="e, idx :${userList}">
     <td th:text="${idx.count}"/>
     <td th:text="${idx.even}"/>
